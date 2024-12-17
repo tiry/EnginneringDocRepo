@@ -1,0 +1,46 @@
+name: Generate OpenAPI Manifest From .NET API
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  generate-openapi:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Setup .NET SDK
+    - name: Set up .NET Core SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'  # Specify the version of .NET you are using
+
+    # Restore dependencies
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # Build the project
+    - name: Build project
+      run: dotnet build --configuration Release
+
+    # Generate OpenAPI documentation
+    - name: Generate OpenAPI manifest
+      run: |
+        # Run the .NET Core project to generate the Swagger JSON (OpenAPI Manifest)
+        dotnet publish --configuration Release --output ./publish
+        curl -o swagger.json http://localhost:5108/swagger/v1/swagger.json  # Replace with your actual URL if necessary
+        
+    # Upload the generated OpenAPI manifest as an artifact
+    - name: Upload OpenAPI Manifest as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: swagger-json
+        path: swagger.json
