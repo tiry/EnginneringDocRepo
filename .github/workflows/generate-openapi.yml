@@ -8,20 +8,30 @@ on:
     branches:
       - master
 
+jobs:
+  generate-openapi:
+    runs-on: windows-latest
+
     steps:
-     - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
 
-     - name: Setup .NET Core
-    
-       uses: actions/setup-dotnet@v1
-       with:
-       dotnet-version: 3.1.x
+    # Setup .NET SDK
+    - name: Set up .NET Core SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'  # Specify the version of .NET you are using
 
-     - name: Install dependencies
-       run: dotnet restore
+    # Restore dependencies
+    - name: Restore dependencies
+      run: dotnet restore
 
-     - name: Build
-       run: dotnet build --configuration Release
+    # Build the project
+    - name: Build project
+      run: dotnet build --configuration Release
 
     # Generate OpenAPI documentation
     - name: Generate OpenAPI manifest
