@@ -26,6 +26,7 @@ jobs:
     # Restore dependencies
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: src/DotNetOpenAPI
 
     # Build the project
     - name: Build project
