@@ -2,37 +2,39 @@ name: Generate OpenAPI Manifest
 
 on:
   push:
-    branches:
-      - master
+    branches: none # [ master ]
   pull_request:
-    branches:
-      - master
+    branches: none # [ master ]
+    
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  generate-openapi:
-    runs-on: windows-latest
+  build-dotnet-app:
+
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: 03-app-dotnet
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 3.1.x
-
-    # Setup .NET SDK
-    - name: Set up .NET Core SDK
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'  # Specify the version of .NET you are using
-
-    # Restore dependencies
+        dotnet-version: 8.0.x
+  
     - name: Restore dependencies
       run: dotnet restore
-
-    # Build the project
-    - name: Build project
-      run: dotnet build --configuration Release
-
+      
+    - name: Build
+      run: dotnet build --no-restore
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      
     # Generate OpenAPI documentation
     - name: Generate OpenAPI manifest
       run: |
