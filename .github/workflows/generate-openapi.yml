@@ -40,7 +40,7 @@ jobs:
       run: |
         # Run the .NET Core project to generate the Swagger JSON (OpenAPI Manifest)
         dotnet publish --configuration Release --output ./publish
-        curl -o swagger.json http://localhost:5000/swagger/v1/swagger.json  # Replace with your actual URL if necessary
+        curl -o swagger.json http://localhost:5108/swagger/v1/swagger.json  # Replace with your actual URL if necessary
         
     # Upload the generated OpenAPI manifest as an artifact
     - name: Upload OpenAPI Manifest as artifact
