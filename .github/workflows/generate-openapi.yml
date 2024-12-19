@@ -39,7 +39,7 @@ jobs:
     - name: Generate OpenAPI specification
       run: |
         # Run the API locally to generate the OpenAPI JSON file
-          dotnet run --project "C:/Users/knatua/Videos/OpenAPIWith.NET/DotNetOpenAPI/DotNetOpenAPI/DotNetOpenAPI.csproj"
+          dotnet run --project C:\Users\knatua\Videos\OpenAPIWith.NET\DotNetOpenAPI\DotNetOpenAPI\DotNetOpenAPI.csproj
           
           # Allow some time for the API to start
           sleep 10
