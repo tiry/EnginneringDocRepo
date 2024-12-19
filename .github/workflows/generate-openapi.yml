@@ -39,13 +39,13 @@ jobs:
     - name: Generate OpenAPI specification
       run: |
         # Run the API locally to generate the OpenAPI JSON file
-          dotnet run --project C:/Users/knatua/Videos/OpenAPIWith.NET/DotNetOpenAPI/DotNetOpenAPI/DotNetOpenAPI.csproj &
-
+          dotnet run --project C:/Users/knatua/Videos/OpenAPIWith.NET/DotNetOpenAPI/DotNetOpenAPI/DotNetOpenAPI.csproj
+          
           # Allow some time for the API to start
           sleep 10
 
           # Fetch the OpenAPI spec (swagger.json) from the local server
-          curl -o openapi.json http://localhost:5108/swagger/v1/swagger.json
+          curl -o openapi.json http://127.0.0.1:5108/swagger/v1/swagger.json
 
     - name: Commit and push OpenAPI to GitHub
       uses: EndBug/add-and-commit@v9
