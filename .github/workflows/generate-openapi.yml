@@ -1,48 +1,48 @@
-name: Generate and Upload OpenAPI Documentation
+name: Generate OpenAPI Manifest
 
 on:
   push:
-    branches:
-      - master
+    branches: none # [ master ]
   pull_request:
-    branches:
-      - master
+    branches: none # [ master ]    
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:   
-
+  workflow_dispatch:
+ 
 jobs:
-  build:
+  build-dotnet-app:
+
     runs-on: ubuntu-latest
+    
     defaults:
       run:
         working-directory: DotNetOpenAPI
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 8.0.x
+  
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      
+    # Step 7: Upload OpenAPI documentation (swagger.json) as an artifact
+    - name: Upload OpenAPI Documentation
+      run: |
+          curl -s http://127.0.0.1:5108/swagger/v1/swagger.json -o swagger.json
+      continue-on-error: true
 
-      - name: Set up .NET SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0'  # Adjust based on your project's .NET version
-
-      - name: Install dependencies
-        run: dotnet restore
-
-      - name: Build the project
-        run: dotnet build --configuration Release
-
-      - name: Publish the project
-        run: dotnet publish --configuration Release --output ./published
-
-      - name: Run API to generate OpenAPI (Swagger) file
-        run: |
-          dotnet ./published/DotNetOpenAPI.dll &
-          sleep 10  # Wait for the app to start and be ready
-          curl -o swagger.json http://127.0.0.1:5108/swagger/v1/swagger.json
-
-      - name: Upload OpenAPI JSON as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: swagger-docs
-          path: swagger.json
+    - name: Upload OpenAPI documentation as artifact
+      uses: actions/upload-artifact@v3
+      with:
+          name: DotNet CRUD API or Version
+          path: /swagger/v1/swagger.json
