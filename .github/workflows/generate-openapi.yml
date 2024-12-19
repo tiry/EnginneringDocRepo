@@ -38,7 +38,7 @@ jobs:
     # Step 7: Upload OpenAPI documentation (swagger.json) as an artifact
     - name: Upload OpenAPI Documentation
       run: |
-          curl -s https://raw.githubusercontent.com/${{ github.EngineeringDocRepo }}/master/swagger/v1/swagger.json -o swagger.json
+          curl -s http://localhost:5108/swagger/v1/swagger.json -o swagger.json
       continue-on-error: true
 
     - name: Upload OpenAPI documentation as artifact
