@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DotNetOpenAPI.Repositories;
+using Microsoft.AspNetCore.Cors;
 namespace DotNetOpenAPI.Controllers
 {
     /// <summary>
@@ -10,7 +11,7 @@ namespace DotNetOpenAPI.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]   
-
+    [EnableCors("AllowAll")]
     public class EmployeesController : ControllerBase
     {
         private readonly ICRUDActions _crudActions;
