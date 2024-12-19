@@ -1,20 +1,19 @@
-name: Upload OpenAPI Specification
+name: Generate OpenAPI Manifest
 
 on:
   push:
-    branches:
-      - master  # This will trigger on push to the main branch
+    branches: none # [ master ]
   pull_request:
-    branches:
-      - master  # Also trigger on PRs targeting the main branch
+    branches: none # [ master ]    
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+ 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-dotnet-app:
 
+    runs-on: ubuntu-latest
+    
     defaults:
       run:
         working-directory: DotNetOpenAPI
@@ -35,23 +34,15 @@ jobs:
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
-
-    - name: Generate OpenAPI specification
+      
+    # Step 7: Upload OpenAPI documentation (swagger.json) as an artifact
+    - name: Upload OpenAPI Documentation
       run: |
-        # Run the API locally to generate the OpenAPI JSON file
-          dotnet run --project C:\Users\knatua\Videos\OpenAPIWith.NET\DotNetOpenAPI\DotNetOpenAPI\DotNetOpenAPI.csproj
-          
-          # Allow some time for the API to start
-          sleep 10
+          curl -s http://127.0.0.1:5108/swagger/v1/swagger.json -o swagger.json
+      continue-on-error: true
 
-          # Fetch the OpenAPI spec (swagger.json) from the local server
-          curl -o openapi.json http://127.0.0.1:5108/swagger/v1/swagger.json
-
-    - name: Commit and push OpenAPI to GitHub
-      uses: EndBug/add-and-commit@v9
+    - name: Upload OpenAPI documentation as artifact
+      uses: actions/upload-artifact@v3
       with:
-          add: 'openapi.json'
-          message: 'Update OpenAPI documentation'
-          author_name: 'Kaushik Natua'
-          author_email: 'kaushik.natua@hyland.com'
-          push: true
+          name: swagger-doc
+          path: /swagger/v1/swagger.json
