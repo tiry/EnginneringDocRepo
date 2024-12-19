@@ -38,11 +38,11 @@ jobs:
     # Step 7: Upload OpenAPI documentation (swagger.json) as an artifact
     - name: Upload OpenAPI Documentation
       run: |
-          curl -s https://github.com/kaushiknatua12345/EnginneringDocRepo/tree/master/DotNetOpenAPI/swagger/v1/swagger.json -o swagger.json
+          curl -s http://127.0.0.1:5108/swagger/v1/swagger.json -o swagger.json
       continue-on-error: true
 
     - name: Upload OpenAPI documentation as artifact
       uses: actions/upload-artifact@v3
       with:
           name: DotNet CRUD API or Version
-          path: swagger.json
+          path: DotNetOpenAPI/DotNetOpenAPI/swagger.json
