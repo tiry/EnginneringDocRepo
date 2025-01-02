@@ -23,6 +23,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.2.0" />
   </ItemGroup>
 
+<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	<Exec Command="dotnet tool restore"></Exec>
+	<Exec Command="dotnet swagger tofile --output swagger_v1.json $(OutputPath)\$(AssemblyName).dll v1" />
+</Target>
 
   <PropertyGroup>
     <OpenApiGenerateDocumentsOptions>--document-name v1</OpenApiGenerateDocumentsOptions>
