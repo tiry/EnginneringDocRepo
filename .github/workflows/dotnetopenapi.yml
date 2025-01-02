@@ -10,9 +10,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: DotNetOpenAPI
 
     steps:
     - name: Checkout code
@@ -28,30 +25,24 @@ jobs:
 
     - name: Build
       run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj
-    
-    
 
-    - name: Generate OpenAPI Documentation
-      run: |  
-         dotnet tool restore  # Restores any dotnet tools (if needed)
-         dotnet swagger tofile --output ./swagger.json bin/Release/net8.0/DotNetOpenAPI.dll v1  # Generate the OpenAPI documentation
-      env:
-        DOTNET_ROLL_FORWARD: LatestMajor
-        
+    - name: Publish
+      run: dotnet publish --configuration Release --output ./publish DotNetOpenAPI/DotNetOpenAPI.csproj
+
     - name: Verify Swagger JSON
       run: |
-        cd DotNetOpenAPI
-        if [ ! -f ./swagger.json ]; then
+        cd DotNetOpenAPI/publish
+        if [ ! -f ./swagger/v1/swagger.json ]; then
           echo "Swagger JSON file not found!"
           exit 1
         fi
-        ls -la ./swagger.json
+        ls -la ./swagger/v1/swagger.json
 
     - name: Upload OpenAPI Documentation as Artifact
       uses: actions/upload-artifact@v4
       with:
         name: openapi-docs
-        path: DotNetOpenAPI/swagger.json  # Path to your generated OpenAPI specification (e.g., swagger.json)
+        path: DotNetOpenAPI/publish/swagger/v1/swagger.json  # Path to your generated OpenAPI specification (e.g., swagger.json)
         if-no-files-found: warn
         compression-level: 6
         overwrite: true
