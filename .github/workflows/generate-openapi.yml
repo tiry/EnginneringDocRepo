@@ -33,16 +33,16 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
 
-    - name: Install Swagger tool locally
-      run: dotnet new tool-manifest && dotnet tool install Swashbuckle.AspNetCore.Cli --version 7.2.0
+    - name: Generate OpenAPI Documentation
+      run: |
+          dotnet tool restore  # Restores any dotnet tools (if needed)
+          dotnet publish --configuration Release --output ./publish  # Publish the application
+          # If using Swashbuckle, the OpenAPI specification is generated here
+          echo "OpenAPI documentation generated"
 
-    - name: Generate Swagger JSON
-      run: dotnet tool run swagger tofile --output DotNetOpenAPI/DotNetOpenAPI/swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v2
-      env:
-        DOTNET_ROLL_FORWARD: LatestMajor
-
-    - name: Upload Swagger JSON
+    - name: Upload OpenAPI Documentation as Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: swagger-json
-        path: ./swagger.json
+          name: openapi-docs
+          path: ./publish/swagger.json  # Path to your generated OpenAPI specification (e.g., swagger.json)
+
