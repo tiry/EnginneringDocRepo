@@ -38,7 +38,7 @@ jobs:
 
     - name: Generate OpenAPI Documentation
       run: |
-        cd DotNetOpenAPI
+        cd DotNetOpenAPI/DotNetOpenAPI
         dotnet tool restore  # Restores any dotnet tools (if needed)
         dotnet publish --configuration Release --output ./publish  # Publish the application
         dotnet swagger tofile --output ./swagger.json ./publish/DotNetOpenAPI.dll v1  # Generate the OpenAPI documentation
