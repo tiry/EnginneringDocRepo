@@ -1,0 +1,46 @@
+name: .NET Core OpenAPI Build and Artifact
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0'  # You can adjust to the version you're using
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build the solution
+      run: dotnet build --configuration Release
+
+    - name: Publish the project
+      run: dotnet publish --configuration Release --output ./out
+
+    - name: Generate OpenAPI documentation
+      run: |
+        # Ensure the Swagger file is generated after publishing
+        dotnet swagger tofile --output ./out/swagger.json ./out/DotNetOpenAPI.dll v1
+
+    - name: Create OpenAPI Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: openapi-spec
+        path: ./out/swagger.json
+
+    - name: Test the application (optional)
+      run: dotnet test --configuration Release
