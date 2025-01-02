@@ -31,16 +31,16 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
 
-    - name: Install Swagger tool
-      run: dotnet tool install --global Swashbuckle.AspNetCore.Cli --version 7.2.0
+    - name: Install Swagger tool locally
+      run: dotnet new tool-manifest && dotnet tool install Swashbuckle.AspNetCore.Cli --version 7.2.0
 
     - name: Generate Swagger JSON
-      run: dotnet swagger tofile --output ./swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1
+      run: dotnet tool run swagger tofile --output ./swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1
       env:
         DOTNET_ROLL_FORWARD: LatestMajor
 
     - name: Upload Swagger JSON
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v2
       with:
         name: swagger-json
         path: ./swagger.json
