@@ -31,7 +31,7 @@ jobs:
 
     - name: Install Swagger tool locally
       run: |
-        cd DotNetOpenAPI
+        cd DotNetOpenAPI/DotNetOpenAPI
         dotnet new tool-manifest
         dotnet tool install Swashbuckle.AspNetCore.Cli --version 7.2.0
         dotnet tool list
