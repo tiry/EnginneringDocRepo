@@ -44,5 +44,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
           name: openapi-docs
-          path: swagger.json  # Path to your generated OpenAPI specification (e.g., swagger.json)
+          path: /home/runner/work/EnginneringDocRepo/EnginneringDocRepo/DotNetOpenAPI/DotNetOpenAPI/./swagger.json  # Path to your generated OpenAPI specification (e.g., swagger.json)
 
