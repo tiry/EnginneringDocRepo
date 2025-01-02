@@ -29,7 +29,12 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj  
 
-
+     # Step 7: Upload OpenAPI documentation (swagger.json) as an artifact
+    - name: Upload OpenAPI Documentation
+      run: |
+          curl -s http://127.0.0.1:5108/swagger/v1/swagger.json -o swagger.json
+      continue-on-error: true
+      
     - name: Verify Swagger JSON
       run: |
         cd DotNetOpenAPI
