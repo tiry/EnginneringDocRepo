@@ -32,7 +32,7 @@ jobs:
     - name: Generate OpenAPI Documentation
       run: |
           dotnet tool restore  # Restores any dotnet tools (if needed)
-          dotnet publish --configuration Release --output DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0  # Publish the application
+          dotnet publish --configuration Release --output ./publish  # Publish the application
           # If using Swashbuckle, the OpenAPI specification is generated here
           echo "OpenAPI documentation generated"
 
