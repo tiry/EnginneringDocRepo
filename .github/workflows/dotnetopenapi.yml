@@ -10,9 +10,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: DotNetOpenAPI
 
     steps:
     - name: Checkout code
@@ -24,7 +21,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore DotNetOpenAPI/DotNetOpenAPI.csproj
 
     - name: Build
       run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj
@@ -34,13 +31,14 @@ jobs:
         cd DotNetOpenAPI
         dotnet new tool-manifest
         dotnet tool install Swashbuckle.AspNetCore.Cli --version 7.2.0
+        dotnet tool list
 
     - name: Generate OpenAPI Documentation
       run: |
         cd DotNetOpenAPI
         dotnet tool restore  # Restores any dotnet tools (if needed)
-        dotnet publish --configuration Release  # Publish the application
-        dotnet tool run swagger tofile --output ./swagger.json bin/Release/net8.0/DotNetOpenAPI.dll v1  # Generate the OpenAPI documentation
+        dotnet publish --configuration Release --output ./publish  # Publish the application
+        dotnet swagger tofile --output ./swagger.json ./publish/DotNetOpenAPI.dll v1  # Generate the OpenAPI documentation
       env:
         DOTNET_ROLL_FORWARD: LatestMajor
 
