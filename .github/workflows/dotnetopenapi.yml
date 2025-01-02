@@ -39,8 +39,8 @@ jobs:
       run: |
         cd DotNetOpenAPI
         dotnet tool restore  # Restores any dotnet tools (if needed)
-        dotnet publish --configuration Release --output ./publish  # Publish the application
-        dotnet swagger tofile --output ./swagger.json ./publish/DotNetOpenAPI.dll v1  # Generate the OpenAPI documentation
+        dotnet publish --configuration Release --output DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0  # Publish the application
+        dotnet swagger tofile --output ./swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1  # Generate the OpenAPI documentation
       env:
         DOTNET_ROLL_FORWARD: LatestMajor
 
