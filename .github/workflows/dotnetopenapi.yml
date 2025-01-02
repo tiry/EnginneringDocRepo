@@ -21,7 +21,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore DotNetOpenAPI/DotNetOpenAPI.csproj
+      run: dotnet restore DotNetOpenAPI/DotNetOpenAPI/DotNetOpenAPI.csproj
 
     - name: Build
       run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj
