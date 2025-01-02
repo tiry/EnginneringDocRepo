@@ -1,35 +1,29 @@
-name: Download OpenAPI Documentation
+name: Build and Generate Swagger
 
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: DotNetOpenAPI
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up .NET SDK
+    - name: Set up .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: '8.0'  # You can change this to the version you're using
+        dotnet-version: '8.0.x'
 
     - name: Restore dependencies
       run: dotnet restore
-      
-    - name: Restore dependencies
-      run: dotnet restore
-      
+
     - name: Build
       run: dotnet build --configuration Release
 
@@ -39,10 +33,10 @@ jobs:
     - name: Generate Swagger JSON
       run: dotnet swagger tofile --output ./swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1
       env:
-       DOTNET_ROLL_FORWARD: LatestMajor
-       
-    - name: Upload OpenAPI JSON as artifact
-      uses: actions/upload-artifact@v4
+        DOTNET_ROLL_FORWARD: LatestMajor
+
+    - name: Upload Swagger JSON
+      uses: actions/upload-artifact@v2
       with:
-        name: openapi-docs
+        name: swagger-json
         path: ./swagger.json
