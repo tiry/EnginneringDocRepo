@@ -10,6 +10,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: DotNetOpenAPI
 
     steps:
     - name: Checkout code
@@ -21,7 +24,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore https://github.com/kaushiknatua12345/EnginneringDocRepo/tree/master/DotNetOpenAPI/DotNetOpenAPI
+      run: dotnet restore
 
     - name: Build
       run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj
