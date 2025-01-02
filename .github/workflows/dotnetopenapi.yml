@@ -29,17 +29,10 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj
     
-    - name: Install Swagger tool
-      run: |
-        cd DotNetOpenAPI
-        dotnet new tool-manifest --force
-        dotnet tool install --version 7.2.0 Swashbuckle.AspNetCore.Cli
-        dotnet tool list
+    
 
     - name: Generate OpenAPI Documentation
-      run: |
-         cd DotNetOpenAPI
-         dotnet tool restore  # Restores any dotnet tools (if needed)
+      run: |        
          dotnet swagger tofile --output ./swagger.json bin/Release/net8.0/DotNetOpenAPI.dll v1  # Generate the OpenAPI documentation
       env:
         DOTNET_ROLL_FORWARD: LatestMajor
