@@ -1,46 +1,64 @@
-name: .NET Core OpenAPI Build and Artifact
+name: .NET
 
 on:
   push:
-    branches:
-      - master
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - master
-  workflow_dispatch:
+    branches: [ "master" ]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-    - name: Set up .NET SDK
-      uses: actions/setup-dotnet@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0'  # You can adjust to the version you're using
+        dotnet-version: 8.0.x
 
-    - name: Install dependencies
-      run: dotnet restore
+    - name: Restore dependencies
+      run: dotnet restore DotNetOpenAPI/DotNetOpenAPI.csproj
 
-    - name: Build the solution
-      run: dotnet build --configuration Release
+    - name: Build
+      run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj
 
-    - name: Publish the project
-      run: dotnet publish --configuration Release --output ./out
-
-    - name: Generate OpenAPI documentation
+    - name: Install Swagger tool locally
       run: |
-        # Ensure the Swagger file is generated after publishing
-        dotnet swagger tofile --output ./out/swagger.json ./out/DotNetOpenAPI.dll v1
+        cd DotNetOpenAPI
+        dotnet new tool-manifest
+        dotnet tool install Swashbuckle.AspNetCore.Cli --version 7.2.0
 
-    - name: Create OpenAPI Artifact
+    - name: Generate OpenAPI Documentation
+      run: |
+        cd DotNetOpenAPI
+        dotnet tool restore  # Restores any dotnet tools (if needed)
+        dotnet publish --configuration Release  # Publish the application
+        dotnet tool run swagger tofile --output ./swagger.json bin/Release/net8.0/DotNetOpenAPI.dll v1  # Generate the OpenAPI documentation
+      env:
+        DOTNET_ROLL_FORWARD: LatestMajor
+
+    - name: Verify Swagger JSON
+      run: |
+        cd DotNetOpenAPI
+        if [ ! -f ./swagger.json ]; then
+          echo "Swagger JSON file not found!"
+          exit 1
+        fi
+        ls -la ./swagger.json
+
+    - name: Upload OpenAPI Documentation as Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: openapi-spec
-        path: ./out/swagger.json
+        name: openapi-docs
+        path: DotNetOpenAPI/swagger.json  # Path to your generated OpenAPI specification (e.g., swagger.json)
+        if-no-files-found: warn
+        compression-level: 6
+        overwrite: true
+        include-hidden-files: true
 
-    - name: Test the application (optional)
-      run: dotnet test --configuration Release
+    - name: Test
+      run: dotnet test --no-build --verbosity normal DotNetOpenAPI/DotNetOpenAPI.csproj
