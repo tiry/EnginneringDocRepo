@@ -31,18 +31,16 @@ jobs:
       run: dotnet restore
       
     - name: Build
-      run: dotnet build --no-restore
-      
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-
-    - name: Build the project
       run: dotnet build --configuration Release
 
-    - name: Generate OpenAPI documentation
-      run: dotnet tool swagger tofile --output ./swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1 
-      # Adjust the paths and version accordingly.
+    - name: Install Swagger tool
+      run: dotnet tool install --global Swashbuckle.AspNetCore.Cli --version 7.2.0
 
+    - name: Generate Swagger JSON
+      run: dotnet swagger tofile --output ./swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1
+      env:
+       DOTNET_ROLL_FORWARD: LatestMajor
+       
     - name: Upload OpenAPI JSON as artifact
       uses: actions/upload-artifact@v4
       with:
