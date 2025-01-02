@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|c:\\users\\knatua\\videos\\openapiwith.net\\dotnetopenapi\\dotnetopenapi\\dotnetopenapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|solutionrelative:dotnetopenapi\\dotnetopenapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|c:\\users\\knatua\\videos\\openapiwith.net\\dotnetopenapi\\dotnetopenapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|solutionrelative:dotnetopenapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|c:\\users\\knatua\\videos\\openapiwith.net\\dotnetopenapi\\dotnetopenapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|solutionrelative:dotnetopenapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|c:\\users\\knatua\\videos\\openapiwith.net\\dotnetopenapi\\dotnetopenapi\\repositories\\crudactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|solutionrelative:dotnetopenapi\\repositories\\crudactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|c:\\users\\knatua\\videos\\openapiwith.net\\dotnetopenapi\\dotnetopenapi\\repositories\\icrudactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|solutionrelative:dotnetopenapi\\repositories\\icrudactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|c:\\users\\knatua\\videos\\openapiwith.net\\dotnetopenapi\\dotnetopenapi\\models\\employeedb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC9D6849-E3A1-4979-9B23-EB9CBDDD8BF2}|DotNetOpenAPI\\DotNetOpenAPI.csproj|solutionrelative:dotnetopenapi\\models\\employeedb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DotNetOpenAPI.csproj",
+              "DocumentMoniker": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\DotNetOpenAPI.csproj",
+              "RelativeDocumentMoniker": "DotNetOpenAPI\\DotNetOpenAPI.csproj",
+              "ToolTip": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\DotNetOpenAPI.csproj",
+              "RelativeToolTip": "DotNetOpenAPI\\DotNetOpenAPI.csproj",
+              "ViewState": "AQIAABEAAAAAAAAAAAAwwBsAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-17T10:23:20.937Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmployeesController.cs",
+              "DocumentMoniker": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Controllers\\EmployeesController.cs",
+              "RelativeDocumentMoniker": "DotNetOpenAPI\\Controllers\\EmployeesController.cs",
+              "ToolTip": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Controllers\\EmployeesController.cs",
+              "RelativeToolTip": "DotNetOpenAPI\\Controllers\\EmployeesController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAAB0AAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T07:44:31.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Program.cs",
+              "RelativeDocumentMoniker": "DotNetOpenAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Program.cs",
+              "RelativeToolTip": "DotNetOpenAPI\\Program.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T07:40:50.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CRUDActions.cs",
+              "DocumentMoniker": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Repositories\\CRUDActions.cs",
+              "RelativeDocumentMoniker": "DotNetOpenAPI\\Repositories\\CRUDActions.cs",
+              "ToolTip": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Repositories\\CRUDActions.cs",
+              "RelativeToolTip": "DotNetOpenAPI\\Repositories\\CRUDActions.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAAAwAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T07:36:38.369Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ICRUDActions.cs",
+              "DocumentMoniker": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Repositories\\ICRUDActions.cs",
+              "RelativeDocumentMoniker": "DotNetOpenAPI\\Repositories\\ICRUDActions.cs",
+              "ToolTip": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Repositories\\ICRUDActions.cs",
+              "RelativeToolTip": "DotNetOpenAPI\\Repositories\\ICRUDActions.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T07:35:30.126Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmployeeDB.cs",
+              "DocumentMoniker": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Models\\EmployeeDB.cs",
+              "RelativeDocumentMoniker": "DotNetOpenAPI\\Models\\EmployeeDB.cs",
+              "ToolTip": "C:\\Users\\knatua\\Videos\\OpenAPIWith.NET\\DotNetOpenAPI\\DotNetOpenAPI\\Models\\EmployeeDB.cs",
+              "RelativeToolTip": "DotNetOpenAPI\\Models\\EmployeeDB.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T06:56:56.435Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "DotNet CRUD WebAPI With Open API Documentation",
+    "description": "This is a sample API created using .NET Core to test documentation process using OpenAPI",
+    "contact": {
+      "name": "Kaushik Natua",
+      "email": "kaushik.natua@hyland.com"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Employees": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "License Information: All rights reserved by Kaushik Natua",
+        "description": "This method will return all the employees present under EmployeeList        \r\n\r\nYou can do futher modification of the code to check for an empty list and return 404 Not Found\r\n \r\n\r\n \r\nSample request:\r\n            \r\n    Get: /api/Employees\r\n    \r\nSample Response:    \r\n[\r\n    {\r\n         \"id\": 1,\r\n          \"name\": \"John\",\r\n                \"department\": \"IT\",\r\n                 \"email\": \"john@hyland.com\"\r\n             },\r\n     {\r\n        \"id\": 2,\r\n        \"name\": \"Jane\",\r\n        \"department\": \"HR\",\r\n        \"email\": \"jane@hyland.com\"\r\n            \r\n}\r\n]",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Employees/{id}": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Get an employee by id",
+        "description": "This method will return an employee if searched id is present under EmployeeList        \r\n\r\nIf the employee is not found, it will return 404 Not Found\r\n \r\n\r\n \r\nSample request:\r\n            \r\nGet: /api/Employees/1\r\n    \r\nSample Response:    \r\n \r\n    {\r\n         \"id\": 1,\r\n          \"name\": \"John\",\r\n                \"department\": \"IT\",\r\n                 \"email\": \"john@hyland.com\"\r\n     }\r\n     \r\n  Sample request:\r\n  \r\n  Get: /api/Employees/123456\r\n\r\n  Sample Response:\r\n  \r\n  404 Not Found",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the employee",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}
