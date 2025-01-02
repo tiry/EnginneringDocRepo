@@ -32,7 +32,8 @@ jobs:
     
 
     - name: Generate OpenAPI Documentation
-      run: |        
+      run: |  
+         dotnet tool restore  # Restores any dotnet tools (if needed)
          dotnet swagger tofile --output ./swagger.json bin/Release/net8.0/DotNetOpenAPI.dll v1  # Generate the OpenAPI documentation
       env:
         DOTNET_ROLL_FORWARD: LatestMajor
