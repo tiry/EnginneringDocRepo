@@ -41,7 +41,7 @@ jobs:
 
     - name: Generate OpenAPI documentation
       run: |
-        dotnet swagger tofile --output ./swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1
+        dotnet tool run swagger tofile --output ./swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1 EnvironmentVariables="DOTNET_ROLL_FORWARD=LatestMajor"
       # Adjust the paths and version accordingly.
 
     - name: Upload OpenAPI JSON as artifact
