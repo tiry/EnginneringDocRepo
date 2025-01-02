@@ -30,7 +30,7 @@ jobs:
       run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj
 
     - name: Publish
-      run: dotnet publish --configuration Release --output ./publish DotNetOpenAPI/DotNetOpenAPI.csproj
+      run: dotnet publish --configuration Release --output ./DotNetOpenAPI/publish DotNetOpenAPI/DotNetOpenAPI.csproj
 
     - name: Verify Swagger JSON
       run: |
