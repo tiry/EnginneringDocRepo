@@ -33,11 +33,11 @@ jobs:
     - name: Verify Swagger JSON
       run: |
         cd DotNetOpenAPI
-        if [ ! -f ./swagger/v1/swagger.json ]; then
+        if [ ! -f ./swagger.json ]; then
           echo "Swagger JSON file not found!"
           exit 1
         fi
-        ls -la ./swagger/v1/swagger.json
+        ls -la ./swagger.json
 
     - name: Upload OpenAPI Documentation as Artifact
       uses: actions/upload-artifact@v4
