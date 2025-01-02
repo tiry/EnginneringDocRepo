@@ -29,12 +29,12 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj
     
-    - name: Generate OpenAPI Documentation
+    - name: Publish the application
+      run: dotnet publish --configuration Release --output ./publish
+
+    - name: Generate OpenAPI documentation
       run: |
-          dotnet tool restore  # Restores any dotnet tools (if needed)
-          dotnet publish --configuration Release --output ./publish  # Publish the application
-          # If using Swashbuckle, the OpenAPI specification is generated here
-          echo "OpenAPI documentation generated"
+        dotnet swagger tofile --output ./publish/swagger.json ./DotNetOpenAPI.dll v1
 
     - name: Verify Swagger JSON
       run: |
