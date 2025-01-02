@@ -35,7 +35,7 @@ jobs:
       run: dotnet new tool-manifest && dotnet tool install Swashbuckle.AspNetCore.Cli --version 7.2.0
 
     - name: Generate Swagger JSON
-      run: dotnet tool run swagger tofile --output ./swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1
+      run: dotnet tool run swagger tofile --output DotNetOpenAPI/DotNetOpenAPI/swagger.json DotNetOpenAPI/DotNetOpenAPI/bin/Release/net8.0/DotNetOpenAPI.dll v1
       env:
         DOTNET_ROLL_FORWARD: LatestMajor
 
