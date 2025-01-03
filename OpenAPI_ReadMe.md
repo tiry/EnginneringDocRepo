@@ -12,7 +12,7 @@ OpenAPI documents are usually written in YAML or JSON formats and contain severa
 
 * openapi: The version of the OpenAPI specification used (e.g., "3.1.0").
 info: Contains metadata about the API, such as its title, description, version, contact information, and license.
-* servers: Describes the available API servers, including URLs and any relevant variables (e.g., https://api.example.com/v1).
+* servers: Describes the available API servers, including URLs and any relevant variables.
 * paths: Defines the available API endpoints (URLs) and the supported HTTP methods (GET, POST, PUT, DELETE, etc.). Each endpoint has details on parameters, request bodies, responses, etc.
 * components: Defines reusable elements, such as:
   - schemas: Data models (usually represented in JSON Schema format) used in requests and responses.
