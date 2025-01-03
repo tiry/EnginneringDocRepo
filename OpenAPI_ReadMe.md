@@ -1,8 +1,4 @@
-# API Documentation - An Introduction
-
-API documentation is a well-written set of instructions on how to use and interact with an application programming interface (API). It is a reference guide for developers, that assists them in understanding an API’s functionality, endpoints, request parameters, response formats, and authentication requirements.
-
-Documenting an API is essential as it enables successful integration with the components of the software and OpenAPI specification provides a combination of different tools and libraries to help achieve that.
+# OpenAPI - An Introduction
 
 ## OpenAPI
 OpenAPI is a specification for defining APIs (Application Programming Interfaces) that allows developers to describe their APIs in a standard, machine-readable format. The primary goal of OpenAPI is to create clear, concise, and easy-to-understand documentation for APIs. Here are the key elements and standards associated with OpenAPI documentation:
@@ -139,9 +135,4 @@ There are many tools that can generate user-friendly documentation from OpenAPI 
 **11. Code Generation**
 Tools like **Swagger Codegen** and **OpenAPI Generator** can automatically generate client libraries, server stubs, and API documentation based on OpenAPI specifications.
 
-### OpenAPI Documentation Standards
-* **Keep description concise:** API descriptions should be clear and to the point.
-* **Use descriptive names**: For paths, parameters, and responses.
-* **Version your API:** Indicate which version of your API is being used.
-* **Document errors:** Include common error responses (e.g., 400, 401, 404).
-* **Provide examples:** Whenever possible, include request/response examples.
+Next, read standards for OpenAPI Documentation - OpenAPIStandards_ReadMe.md
