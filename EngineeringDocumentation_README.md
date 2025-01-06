@@ -29,6 +29,8 @@ Investing in standardized engineering documentation early as Technology moves in
 * **Automate Documentation Maintenance**
   - **Outcome:** Ensure documentation evolves with code changes and reduces manual effort.
   - **Metric:** 90% of repositories integrate automated documentation generation and updates within CI/CD pipelines within the first year.
+ 
+  ### Next Read: <a href="https://github.com/kaushiknatua12345/EnginneringDocRepo/blob/master/EngineeringDocumentationStandards_GuidingPrinciples_ReadMe.md">https://github.com/kaushiknatua12345/EnginneringDocRepo/blob/master/EngineeringDocumentationStandards_GuidingPrinciples_ReadMe.md</a>
 
 * **Support Long-Term Scalability**
   - **Outcome:** Establish scalable processes that adapt as the organization grows.
