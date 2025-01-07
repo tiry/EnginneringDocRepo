@@ -39,7 +39,7 @@ jobs:
 
     - name: Download Swagger JSON
       run: |
-       curl http://localhost:5000/swagger/v1/swagger.json --output swagger.json
+       curl http://localhost:5108/swagger/v1/swagger.json --output swagger.json
     
     - name: Upload OpenAPI Documentation as Artifact
       uses: actions/upload-artifact@v4
