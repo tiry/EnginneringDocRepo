@@ -29,20 +29,8 @@ jobs:
       run: dotnet restore DotNetOpenAPI/DotNetOpenAPI.csproj
 
     - name: Build
-      run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj         
-
-    - name: Publish
-      run: dotnet publish --configuration Release --output ./publish DotNetOpenAPI/DotNetOpenAPI.csproj
-
-    - name: Run application
-      run: |
-       dotnet ./publish/DotNetOpenAPI.dll &
-       sleep 10
-
-    - name: Download Swagger JSON
-      run: |
-       curl http://localhost:5000/swagger/v1/swagger.json --output swagger.json
-    
+      run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj     
+   
     - name: Upload OpenAPI Documentation as Artifact
       uses: actions/upload-artifact@v4
       with:
