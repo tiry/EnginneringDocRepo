@@ -12,12 +12,21 @@ namespace DotNetOpenAPI.Repositories
 
         public EmployeeDB? GetEmployee(int id)
         {
-            // Find the employee with the given id
-            return employees.Find(e => e.Id == id);
+           // Find the employee with the given id
+                var find= employees.Find(e => e.Id == id);
+                if(find == null)
+                {
+                return null;
+                }
+                return find;
         }
 
         public List<EmployeeDB> GetEmployees()
         {
+           if(employees.Count == 0)
+            {
+            return null;
+            }
             return employees;
         }
     }
