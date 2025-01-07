@@ -1,0 +1,102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "DotNet CRUD WebAPI With Open API Documentation",
+    "description": "This is a sample API created using .NET Core to test documentation process using OpenAPI",
+    "contact": {
+      "name": "Kaushik Natua",
+      "email": "kaushik.natua@hyland.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Employees": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Get all employees",
+        "description": "Sample request:\r\nGet: /api/Employees\r\n\r\n** This method will return all the employees present under EmployeeList if records exist under the list.\r\n\r\nSample Input:\r\n\r\nEmployeeDB List Info:\r\n\r\n     { Id = 1, Name = \"John\", Department = \"IT\", Email = \"john@hyland.com\" },\r\n     { Id = 2, Name = \"Jane\", Department = \"HR\", Email = \"jane@hyland.com\" }\r\n        \r\n    \r\nSample Response (Output):    \r\n\r\nResponse Code: 200\r\n\r\nResponse Body:\r\n\r\n[\r\n    {\r\n        \"id\": 1,\r\n        \"name\": \"John\",\r\n        \"department\": \"IT\",\r\n        \"email\": \"john@hyland.com\"\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"name\": \"Jane\",\r\n        \"department\": \"HR\",\r\n        \"email\": \"jane@hyland.com\"\r\n    }\r\n] \r\n\r\n****************************************************************************************\r\n/// Sample request:\r\nGet: /api/Employees\r\n\r\n** If no records are present under EmployeeList, it will return 404 Not Found.\r\n\r\nSample Input:\r\n\r\nEmployeeDb List Info: Null\r\n\r\nSample Response (Output):\r\n\r\nStatus Code: 404 \r\n\r\nResponse Body: \r\n\r\nNo Record Found",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "/api/Employees/{id}": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Get an employee by id",
+        "description": "** This method will return an employee if searched id is present under EmployeeList \r\n \r\nSample request:\r\n            \r\nGet: /api/Employees/1\r\n\r\nSample Input:\r\n\r\nEmployeeDB List Info:\r\n\r\n     { Id = 1, Name = \"John\", Department = \"IT\", Email = \"john@hyland.com\" },\r\n     { Id = 2, Name = \"Jane\", Department = \"HR\", Email = \"jane@hyland.com\" }\r\n    \r\nSample Response (Output):    \r\n \r\nResponse Code: 200\r\n\r\nResponse Body:\r\n    {\r\n         \"id\": 1,\r\n          \"name\": \"John\",\r\n                \"department\": \"IT\",\r\n                 \"email\": \"john@hyland.com\"\r\n     }\r\n     \r\n****************************************************************************************\r\n\r\n** If the searched id is not present under EmployeeList, it will return 404 Not Found.\r\n     \r\n  Sample request:\r\n  \r\n  Get: /api/Employees/123456\r\n\r\n Sample Response (Output):\r\n\r\nStatus Code: 404 \r\n\r\nResponse Body: \r\n\r\nNo Record Found For The Searched Id",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The id of the employee",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ProblemDetails": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "instance": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": { }
+    }
+  }
+}
