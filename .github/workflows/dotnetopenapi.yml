@@ -41,19 +41,16 @@ jobs:
         nohup dotnet ./publish/DotNetOpenAPI.dll &
         sleep 10
         # Check if the application is running
-        curl -f http://localhost:5001/swagger/v1/swagger.json || exit 1
+        until curl -s http://localhost:5001/swagger/v1/swagger.json; do
+        echo "Waiting for the application to start..."
+        sleep 5
+        done
 
     - name: Download swagger.json
       run: curl http://localhost:5001/swagger/v1/swagger.json -o swagger.json
 
     - name: Upload swagger.json
-      uses: actions/upload-artifact@v4
-      with:
-        name: swagger-json
-        path: swagger.json
-   
-    - name: Upload OpenAPI Documentation as Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v2
       with:
         name: swagger-json
         path: swagger.json
