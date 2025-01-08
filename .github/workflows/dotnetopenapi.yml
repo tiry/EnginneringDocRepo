@@ -29,13 +29,26 @@ jobs:
       run: dotnet restore DotNetOpenAPI/DotNetOpenAPI.csproj
 
     - name: Build
-      run: dotnet build --configuration Release DotNetOpenAPI/DotNetOpenAPI.csproj     
+      run: dotnet build --configuration Release
+
+    - name: Publish
+      run: dotnet publish --configuration Release --output ./publish
+
+    - name: Start ASP.NET Core application
+      env:
+       ASPNETCORE_URLS: http://localhost:5001
+      run: |
+       nohup dotnet ./publish/DotNetOpenAPI.dll &
+       sleep 10
+
+    - name: Download swagger.json
+      run: curl http://localhost:5001/swagger/v1/swagger.json -o swagger.json
    
     - name: Upload OpenAPI Documentation as Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: openapi-docs
-        path: DotNetOpenAPI/swagger.json  # Path to your generated OpenAPI specification (e.g., swagger.json)
+        name: swagger-json
+        path: swagger.json
         if-no-files-found: warn
         compression-level: 6
         overwrite: true
