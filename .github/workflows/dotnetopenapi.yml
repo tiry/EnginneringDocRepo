@@ -53,7 +53,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: swagger-json
-        path: swagger.json
+        path: DotNetOpenAPI/swagger.json
         if-no-files-found: warn
         compression-level: 6
         overwrite: true
