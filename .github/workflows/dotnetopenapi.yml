@@ -47,7 +47,7 @@ jobs:
         done
 
     - name: Download swagger.json
-      run: curl http://localhost:5001/swagger/v1/swagger.json -o swagger.json
+      run: curl http://localhost:5001/swagger/v1/swagger.json -o DotNetOpenAPI/swagger.json
 
     - name: Upload swagger.json
       uses: actions/upload-artifact@v4
