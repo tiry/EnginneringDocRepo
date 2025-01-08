@@ -49,7 +49,7 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger(u =>
     {
@@ -58,12 +58,11 @@ if (app.Environment.IsDevelopment())
 
     app.UseSwaggerUI(c =>
     {
-        c.RoutePrefix = "swagger";
-        c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "DotNet CRUD API or Version");
+         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
     });
 }
 
-
+app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
